@@ -81,9 +81,19 @@ function Cart() {
           ))}
         </div>
 
-        <div className="mt-10 flex items-center justify-between border-t border-gray-300 pt-6">
-          <span className="text-xl font-semibold">Total</span>
-          <span className="text-2xl font-bold">${total.toFixed(2)}</span>
+        <div className="mt-10 border-t border-gray-300 pt-6">
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-semibold">Total</span>
+
+            <span className="text-2xl font-bold">${total.toFixed(2)}</span>
+          </div>
+
+          <Link
+            to="/checkout"
+            className="mt-6 block w-full rounded-full bg-black px-6 py-4 text-center font-medium text-white transition hover:bg-gray-800"
+          >
+            Proceed to Checkout
+          </Link>
         </div>
       </div>
     </main>
