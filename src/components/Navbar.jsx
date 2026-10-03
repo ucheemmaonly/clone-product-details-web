@@ -1,9 +1,20 @@
 import { Link, NavLink } from "react-router-dom";
 import { Search, ShoppingBag } from "lucide-react";
+import { signOut } from "firebase/auth";
 import { useCartCount } from "../store/cartStore";
+import { auth } from "../firebase";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
   const cartCount = useCartCount();
+  const { currentUser } = useAuth();
+  const handleSignOut = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Error signing out:", error);
+  }
+};
   const navLinkStyle = ({ isActive }) =>
     `transition hover:text-gray-500 ${isActive ? "font-semibold" : ""}`;
 
@@ -31,9 +42,27 @@ function Navbar() {
               </span>
             )}
           </Link>
-          <button className="rounded-full border border-black px-5 py-2 text-sm transition hover:bg-black hover:text-white">
-            Sign In
-          </button>
+          {currentUser ? (
+  <div className="flex items-center gap-3">
+    <span className="hidden max-w-[180px] truncate text-sm sm:block">
+      {currentUser.email}
+    </span>
+
+    <button
+      onClick={handleSignOut}
+      className="rounded-full border border-black px-5 py-2 text-sm transition hover:bg-black hover:text-white"
+    >
+      Sign Out
+    </button>
+  </div>
+) : (
+  <Link
+    to="/login"
+    className="rounded-full border border-black px-5 py-2 text-sm transition hover:bg-black hover:text-white"
+  >
+    Sign In
+  </Link>
+)}
         </div>
       </nav>
     </header>
