@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ProtectedRoutes from "./context/ProtectedRoutes";
 
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -11,6 +12,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Checkout from "./pages/Checkout";
+
 
 function App() {
   return (
@@ -27,6 +30,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route element={<ProtectedRoutes />}></Route>
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
 
