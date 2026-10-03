@@ -30,8 +30,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route element={<ProtectedRoutes />}></Route>
-          <Route path="/checkout" element={<Checkout />} />
+
+          <Route element={<ProtectedRoutes />}>
+  <Route path="/checkout" element={<Checkout />} />
+</Route>
         </Routes>
       </main>
 
