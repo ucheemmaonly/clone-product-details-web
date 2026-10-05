@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCartStore, useCartTotal } from "../store/cartStore";
 import { useShallow } from "zustand/shallow";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 
 function Checkout() {
   const total = useCartTotal();
